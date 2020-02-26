@@ -25,3 +25,7 @@ export const beforeStressedVowel = (parts, index) => {
     return parts[index - 1];
 }
 
+export const afterStressedVowel = (parts, index) => {
+    return parts.slice(index + 1).join(" ");
+}
+

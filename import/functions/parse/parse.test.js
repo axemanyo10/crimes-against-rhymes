@@ -1,4 +1,4 @@
-import { word, cmuLineParts, stressedVowel, stressedVowelIndex, stressedVowelPosition, beforeStressedVowel } from "./parse";
+import { word, cmuLineParts, stressedVowel, stressedVowelIndex, stressedVowelPosition, beforeStressedVowel, afterStressedVowel } from "./parse";
 
 const parts1 = ["relax", "R", "IH0", "L", "AE1", "K", "S"];
 const parts2 = ["affiliated", "AH0", "F", "IH1", "L", "IY0", "EY2", "T", "IH0", "D"];
@@ -63,6 +63,15 @@ describe("test beforeStressedVowel", () => {
         expect(beforeStressedVowel(parts3, 6)).toEqual("N");
         expect(beforeStressedVowel(parts4, 1)).toEqual("");
         expect(beforeStressedVowel(parts5, 3)).toEqual("");
+    });
+
+});
+
+describe("test afterStressedVowel", () => {
+
+    it("returns the rest of the CMU line after the stressed vowel", () => {
+        expect(afterStressedVowel(parts1, 4)).toEqual("K S");
+        expect(afterStressedVowel(parts3, 6)).toEqual("");
     });
 
 });
