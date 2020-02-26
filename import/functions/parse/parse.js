@@ -1,3 +1,16 @@
+export const wordAttributes = (line) => {
+    const parts = cmuLineParts(line);
+    const index = stressedVowelIndex(parts);
+    return {
+        word: word(parts), 
+        stress: stressedVowel(parts, index), 
+        position: stressedVowelPosition(parts, index),
+        before: beforeStressedVowel(parts, index),
+        after: afterStressedVowel(parts, index),
+        syllables: syllableCount(parts)
+    }
+}
+
 export const cmuLineParts = (line) => {
     return line.split(" ");
 }
@@ -32,4 +45,3 @@ export const afterStressedVowel = (parts, index) => {
 export const syllableCount = (parts) => {
     return parts.filter(x => /[A-Z]+[012]/.test(x)).length;
 }
-

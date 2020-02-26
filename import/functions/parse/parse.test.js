@@ -1,10 +1,19 @@
-import { word, cmuLineParts, stressedVowel, stressedVowelIndex, stressedVowelPosition, beforeStressedVowel, afterStressedVowel, syllableCount } from "./parse";
+import { word, cmuLineParts, stressedVowel, stressedVowelIndex, stressedVowelPosition, beforeStressedVowel, afterStressedVowel, syllableCount, wordAttributes } from "./parse";
 
+const line1 = "relax R IH0 L AE1 K S";
 const parts1 = ["relax", "R", "IH0", "L", "AE1", "K", "S"];
 const parts2 = ["affiliated", "AH0", "F", "IH1", "L", "IY0", "EY2", "T", "IH0", "D"];
 const parts3 = ["detainee", "D", "IY2", "T", "EY0", "N", "IY1"];
 const parts4 = ["accident", "AE1", "K", "S", "AH0", "D", "AH0", "N", "T"];
 const parts5 = ["coincidence", "K", "OW0", "IH1", "N", "S", "IH0", "D", "AH0", "N", "S"];
+
+describe("test wordAttributes", () => {
+
+    it("returns an object containing all interesting word attributes from a CMU line", () => {
+        expect(wordAttributes(line1)).toEqual({word: "relax", stress: "AE", position: 0, before: "L", after: "K S", syllables: 2});
+    });
+
+});
 
 describe("test cmuLineParts", () => {
 
