@@ -18,3 +18,10 @@ export const stressedVowelPosition = (parts, index) => {
     return parts.slice(index + 1).filter(x => /[A-Z]+[02]/.test(x)).length
 }
 
+export const beforeStressedVowel = (parts, index) => {
+    if (index == 1 || /[012]/.test(parts[index - 1])) {
+        return "";
+    }
+    return parts[index - 1];
+}
+

@@ -1,8 +1,10 @@
-import { word, cmuLineParts, stressedVowel, stressedVowelIndex, stressedVowelPosition } from "./parse";
+import { word, cmuLineParts, stressedVowel, stressedVowelIndex, stressedVowelPosition, beforeStressedVowel } from "./parse";
 
 const parts1 = ["relax", "R", "IH0", "L", "AE1", "K", "S"];
 const parts2 = ["affiliated", "AH0", "F", "IH1", "L", "IY0", "EY2", "T", "IH0", "D"];
 const parts3 = ["detainee", "D", "IY2", "T", "EY0", "N", "IY1"];
+const parts4 = ["accident", "AE1", "K", "S", "AH0", "D", "AH0", "N", "T"];
+const parts5 = ["coincidence", "K", "OW0", "IH1", "N", "S", "IH0", "D", "AH0", "N", "S"];
 
 describe("test cmuLineParts", () => {
 
@@ -50,5 +52,17 @@ describe("test stressedVowelPosition", () => {
     it("returns the correct position when stressed vowel is last sound", () => {
         expect(stressedVowelPosition(parts3, 6)).toEqual(0);
     });
-    
+
+});
+
+describe("test beforeStressedVowel", () => {
+
+    it("returns the consonent before the stressed vowel", () => {
+        expect(beforeStressedVowel(parts1, 4)).toEqual("L");
+        expect(beforeStressedVowel(parts2, 3)).toEqual("F");
+        expect(beforeStressedVowel(parts3, 6)).toEqual("N");
+        expect(beforeStressedVowel(parts4, 1)).toEqual("");
+        expect(beforeStressedVowel(parts5, 3)).toEqual("");
+    });
+
 });
