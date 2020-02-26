@@ -29,3 +29,7 @@ export const afterStressedVowel = (parts, index) => {
     return parts.slice(index + 1).join(" ");
 }
 
+export const syllableCount = (parts) => {
+    return parts.filter(x => /[A-Z]+[012]/.test(x)).length;
+}
+
