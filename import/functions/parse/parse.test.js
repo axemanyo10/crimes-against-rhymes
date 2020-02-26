@@ -1,13 +1,19 @@
-import { wordFromCMULine } from "./parse";
+import { wordFromParts, pronunciationFromCMULine, cmuLineParts } from "./parse";
+
+describe("test cmuLineParts", () => {
+
+    it("returns array of line parts", () => {
+        const line = "relax R IH0 L AE1 K S";
+        expect(cmuLineParts(line)).toEqual(["relax", "R", "IH0", "L", "AE1", "K", "S"]);
+    });
+
+});
 
 describe("test wordFromCMULine", () => {
 
-    it.each`
-        line                        | word
-        ${"relax R IH0 L AE1 K S"}  | ${"relax"}
-        ${""}                       | ${""}
-    `("returns the word '$word' from '$line'", ({line, word}) => {
-        expect(wordFromCMULine(line)).toEqual(word); 
-    }); 
+    it("returns the word from CMU line parts", () => {
+        const parts = ["relax", "R", "IH0", "L", "AE1", "K", "S"];
+        expect(wordFromParts(parts)).toEqual("relax");
+    });
 
 });

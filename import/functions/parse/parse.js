@@ -1,3 +1,8 @@
-export const wordFromCMULine = (line) => {
-    return line.split(" ")[0];
+export const cmuLineParts = (line) => {
+    return line.split(" ");
 }
+
+export const wordFromParts = (parts) => {
+    return parts[0];
+}
+
