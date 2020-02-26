@@ -1,3 +1,8 @@
+export const allWordAttributes = (lines) => {
+    const lineArray = lines.split(/\n/);
+    return lineArray.map(line => wordAttributes(line));
+}
+
 export const wordAttributes = (line) => {
     const parts = cmuLineParts(line);
     const index = stressedVowelIndex(parts);
