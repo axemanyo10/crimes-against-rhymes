@@ -1,3 +1,5 @@
+const isValidCMULine = (line) => /^[-a-z'.]+(\([0-9]\))? [ A-Z012]+$/.test(line);
+
 const cmuLineParts = (line) => line.split(' ');
 
 const word = (parts) => parts[0];
@@ -39,7 +41,8 @@ const wordAttributes = (line) => {
 
 const allWordAttributes = (lines) => {
   const lineArray = lines.split(/\n/);
-  return lineArray.map((line) => wordAttributes(line));
+  const validLines = lineArray.filter((x) => isValidCMULine(x));
+  return validLines.map((line) => wordAttributes(line));
 };
 
 export { wordAttributes, allWordAttributes };

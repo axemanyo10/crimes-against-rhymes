@@ -117,4 +117,12 @@ describe('test allWordAttributes', () => {
       wordAttributes5,
     ]);
   });
+
+  it('handles blank lines in the input', () => {
+    expect(allWordAttributes(`\n${line1}\n\n`)).toEqual([wordAttributes1]);
+  });
+
+  it('handles unparseable lines in the input', () => {
+    expect(allWordAttributes(`some guff\n${line1}\n\nsome other guff\n`)).toEqual([wordAttributes1]);
+  });
 });
