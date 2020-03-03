@@ -1,4 +1,4 @@
-import { wordAttributes, allWordAttributes } from './parse';
+import { wordAttributes, allWordAttributes } from './cmuDictionary';
 
 const line1 = 'relax R IH0 L AE1 K S';
 const line2 = 'affiliated AH0 F IH1 L IY0 EY2 T IH0 D';
