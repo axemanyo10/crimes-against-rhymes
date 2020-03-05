@@ -108,8 +108,8 @@ describe('test wordAttributes', () => {
 
 describe('test allWordAttributes', () => {
   it('returns an array of word attribute objects with an entry for each line', () => {
-    expect(allWordAttributes(line1)).toEqual([wordAttributes1]);
-    expect(allWordAttributes(`${line1}\n${line2}\n${line3}\n${line4}\n${line5}`)).toEqual([
+    expect(allWordAttributes([line1])).toEqual([wordAttributes1]);
+    expect(allWordAttributes([line1, line2, line3, line4, line5])).toEqual([
       wordAttributes1,
       wordAttributes2,
       wordAttributes3,
@@ -118,11 +118,11 @@ describe('test allWordAttributes', () => {
     ]);
   });
 
-  it('handles blank lines in the input', () => {
-    expect(allWordAttributes(`\n${line1}\n\n`)).toEqual([wordAttributes1]);
+  it('handles empty elements in the input', () => {
+    expect(allWordAttributes(['', line1, '', ''])).toEqual([wordAttributes1]);
   });
 
   it('handles unparseable lines in the input', () => {
-    expect(allWordAttributes(`some guff\n${line1}\n\nsome other guff\n`)).toEqual([wordAttributes1]);
+    expect(allWordAttributes(['some guff', line1, '', 'some other guff', ''])).toEqual([wordAttributes1]);
   });
 });

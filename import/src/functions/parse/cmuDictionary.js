@@ -39,8 +39,7 @@ const wordAttributes = (line) => {
   };
 };
 
-const allWordAttributes = (lines) => {
-  const lineArray = lines.split(/\n/);
+const allWordAttributes = (lineArray) => {
   const validLines = lineArray.filter((x) => isValidCMULine(x));
   return validLines.map((line) => wordAttributes(line));
 };
