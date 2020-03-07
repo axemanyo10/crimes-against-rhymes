@@ -1,7 +1,7 @@
-import { readFileSync } from 'fs';
+import * as fs from 'fs';
 
-const linesFromFile = (filename) => {
-  return readFileSync(filename).split('\n');
+const linesFromFile = (filename, filesystem = fs) => {
+  return filesystem.readFileSync(filename).split('\n');
 };
 
 export { linesFromFile as default };

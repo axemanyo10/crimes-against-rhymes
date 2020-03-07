@@ -23,11 +23,11 @@ const withVerb = (wordAttributesList, verbLines) => {
   }));
 };
 
-const getAllWords = (cmuFile, wordRankFile, nounFile, verbFile) => {
-  const cmuLines = fileLines(cmuFile);
-  const wordRankLines = fileLines(wordRankFile);
-  const nounLines = fileLines(nounFile);
-  const verbLines = fileLines(verbFile);
+const getAllWords = (cmuFile, wordRankFile, nounFile, verbFile, filesystem) => {
+  const cmuLines = fileLines(cmuFile, filesystem);
+  const wordRankLines = fileLines(wordRankFile, filesystem);
+  const nounLines = fileLines(nounFile, filesystem);
+  const verbLines = fileLines(verbFile, filesystem);
   let wordAttributesList = allWordAttributes(cmuLines);
   wordAttributesList = withPopularityRank(wordAttributesList, wordRankLines);
   wordAttributesList = withNoun(wordAttributesList, nounLines);
